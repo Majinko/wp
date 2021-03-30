@@ -3,8 +3,7 @@
 
 class DnsController extends Controller
 {
-
-    private $dnsTypes = [
+    private array $dnsTypes = [
         'A' => 'A record',
         'AAAA' => 'AAAA record',
         'MX' => 'MX record',
@@ -13,6 +12,17 @@ class DnsController extends Controller
         'NS' => 'NS record',
         'TXT' => 'TXT record',
         'SRV' => 'SRV record',
+    ];
+
+    private array $requiredFields = [
+        'A' => ['type', 'name', 'content'],
+        'AAAA' => ['type', 'name', 'content'],
+        'MX' => ['type', 'name', 'content', 'prio'],
+        'ANAME' => ['type', 'name', 'content'],
+        'CNAME' => ['type', 'name', 'content'],
+        'NS' => ['type', 'name', 'content'],
+        'TXT' => ['type', 'name', 'content'],
+        'SRV' => ['type', 'name', 'content', 'prio', 'port', 'weight'],
     ];
 
     public function process(array $parameters)
@@ -47,8 +57,7 @@ class DnsController extends Controller
     }
 
     private function store()
-    {
-        $curlUtils = new CurlUtils('POST', '/v1/user/self/zone/php-assignment-10.ws/record');
+    {$curlUtils = new CurlUtils('POST', '/v1/user/self/zone/php-assignment-10.ws/record');
 
         $curlUtils->setData($_POST);
         $response = json_decode($curlUtils->curlRequest());
