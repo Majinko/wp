@@ -14,17 +14,6 @@ class DnsController extends Controller
         'SRV' => 'SRV record',
     ];
 
-    private array $requiredFields = [
-        'A' => ['type', 'name', 'content'],
-        'AAAA' => ['type', 'name', 'content'],
-        'MX' => ['type', 'name', 'content', 'prio'],
-        'ANAME' => ['type', 'name', 'content'],
-        'CNAME' => ['type', 'name', 'content'],
-        'NS' => ['type', 'name', 'content'],
-        'TXT' => ['type', 'name', 'content'],
-        'SRV' => ['type', 'name', 'content', 'prio', 'port', 'weight'],
-    ];
-
     public function process(array $parameters)
     {
         if ($parameters[0] && $parameters[0] === 'create') {
