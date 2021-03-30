@@ -1,0 +1,29 @@
+.form{
+  width: 100%;
+  padding: 15px;
+  background:#f8f8f8;
+  border:1px solid rgba(0, 0, 0, 0.075);
+  margin-bottom:25px;
+  color:#727272 !important;
+  font-size:13px;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  box-sizing:border-box
+}
+
+.form:hover{
+  border:1px solid #8BC3A3;
+}
+
+.form:focus{
+  color: white;
+  outline: none;
+  border:1px solid #8BC3A3;
+}
+
+.textarea{
+  height: 200px;
+  max-height: 200px;
+  max-width: 100%;
+}

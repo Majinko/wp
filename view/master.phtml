@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <base href="/localhost" />
+    <meta charset="UTF-8" />
+    <title><?= $title ?></title>
+
+    <link rel="stylesheet" href="public/css/style.css" type="text/css"/>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1 class="m-y-0">Websupport Mh</h1>
+
+        <nav>
+            <ul class="m-y-0">
+                <li><a href="/home">Dns záznamy</a></li>
+                <li><a href="/dns/create">Pridať nový dns záznam</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container p-b-50">
+    <?php foreach ($messages as $message) : ?>
+        <p class="message"><?= $message ?></p>
+    <?php endforeach ?>
+
+    <br clear="both" />
+
+    <?php $this->controller->renderTemplate();?>
+</div>
+
+<footer>
+    <script src="/public/js/theme.js"></script>
+</footer>
+</body>
+</html>

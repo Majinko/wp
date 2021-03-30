@@ -1,0 +1,24 @@
+<h1 class="m-t-0">Home</h1>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Content</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($dns['items'] as $d) : ?>
+        <tr>
+            <td><?= $d['id'] ?></td>
+            <td><?= $d['type'] ?></td>
+            <td><?= $d['name'] ?></td>
+            <td><?= $d['content'] ?></td>
+            <td><a href="/dns/destroy/<?= $d['id'] ?>" onclick="return confirm('Are you sure?')">Odstranit</a></td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>
