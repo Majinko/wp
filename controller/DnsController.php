@@ -57,9 +57,16 @@ class DnsController extends Controller
     }
 
     private function store()
-    {$curlUtils = new CurlUtils('POST', '/v1/user/self/zone/php-assignment-10.ws/record');
+    {
+        $dns = [];
 
-        $curlUtils->setData($_POST);
+        foreach ($_POST as $key => $value) {
+            $dns[$key] = filter_var($value, FILTER_SANITIZE_STRING);
+        }
+
+        $curlUtils = new CurlUtils('POST', '/v1/user/self/zone/php-assignment-10.ws/record');
+
+        $curlUtils->setData($dns);
         $response = json_decode($curlUtils->curlRequest());
 
         // errors
@@ -74,7 +81,7 @@ class DnsController extends Controller
                 $this->addMessage($error);
             }
 
-            $this->data['dns'] = $_POST;
+            $this->data['dns'] = $dns;
             $this->data['types'] = $this->dnsTypes;
             $this->view = 'dns-create';
         } else {
