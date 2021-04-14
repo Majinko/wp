@@ -29,10 +29,12 @@ class DnsController extends Controller
         }
     }
 
+
     private function createDns()
     {
         $this->head['title'] = 'Pridať nový dns záznam';
         $this->data['types'] = $this->dnsTypes;
+        $this->data['dns'] = [];
         $this->view = 'dns-create';
     }
 
@@ -62,12 +64,16 @@ class DnsController extends Controller
         if ($response->status === 'error') {
             $errors = $response->errors;
 
-            foreach ($errors->content as $error) {
-                $this->addMessage($error);
+            if (isset($errors) && isset($errors->content)) {
+                foreach ($errors->content as $error) {
+                    $this->addMessage($error);
+                }
             }
 
-            foreach ($errors->name as $error) {
-                $this->addMessage($error);
+            if (isset($errors) && isset($errors->name)) {
+                foreach ($errors->name as $error) {
+                    $this->addMessage($error);
+                }
             }
 
             $this->data['dns'] = $dns;

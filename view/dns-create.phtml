@@ -12,27 +12,27 @@
 
     <div class="jsInput">
         <label for="name">Name</label>
-        <input id="name" type="text" value="<?= $dns['name'] ?>" required name="name" class="form jsRequired">
+        <input id="name" type="text" value="<?= $dns['name'] ?? '' ?>" required name="name" class="form jsRequired">
     </div>
 
     <div class="jsInput">
         <label for="content">Content</label>
-        <input id="content" type="text" required value="<?= $dns['content'] ?>"  name="content" class="form jsRequired">
+        <input id="content" type="text" required value="<?= $dns['content'] ?? '' ?>"  pattern="(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)_*(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)_*){3}" name="content" class="form jsRequired">
     </div>
 
     <div class="jsInput d-none">
         <label for="prio">Prio</label>
-        <input id="prio" type="number" name="prio" value="<?= $dns['prio'] ?>" class="form jsRequired">
+        <input id="prio" type="number" name="prio" value="<?= $dns['prio'] ?? '' ?>" class="form jsRequired">
     </div>
 
     <div class="jsInput d-none">
         <label for="port">Port</label>
-        <input id="port" type="number" name="port"  value="<?= $dns['port'] ?>" class="form jsRequired">
+        <input id="port" type="number" name="port"  value="<?= $dns['port'] ?? '' ?>" class="form jsRequired">
     </div>
 
     <div class="jsInput d-none">
         <label for="weight">Weight</label>
-        <input id="weight" type="number" name="weight" value="<?= $dns['weight'] ?>" class="form jsRequired">
+        <input id="weight" type="number" name="weight" value="<?= $dns['weight'] ?? '' ?>" class="form jsRequired">
     </div>
 
     <div class="jsInput">
